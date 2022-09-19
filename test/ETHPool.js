@@ -117,6 +117,26 @@ describe("Contract", function () {
             ).to.be.revertedWith("Ownable: caller is not the owner");
         });
 
+        it("should update rewards balance after withdrawal", async function () {
+            const { hardhatToken, owner, addr1, addr2 } = await loadFixture(
+                deployTokenFixture
+            );
+
+            await hardhatToken.connect(addr1).deposit({ value: 100 });
+            hardhatToken.connect(addr1).depositReward({ value: 100 })
+
+            await hardhatToken.connect(addr1).withdraw();
+            expect(
+                await hardhatToken.deposits(addr1.address)
+            ).to.equal(0);
+            expect(
+                await hardhatToken.totalDeposited()
+            ).to.equal(0);
+
+            expect(
+                await hardhatToken.totalDepositedRewards()
+            ).to.equal(0);
+        });
     });
 
     describe("Withdraw", function () {

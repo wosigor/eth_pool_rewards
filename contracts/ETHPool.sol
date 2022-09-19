@@ -91,6 +91,7 @@ contract ETHPool is ReentrancyGuard, Ownable {
         (bool success, ) = msg.sender.call{value: totalAmount}("");
         deposits[msg.sender] = 0;
         require(success, "Failed to send the funds");
+        totalDepositedRewards = totalDepositedRewards.sub(reward);
         emit Withdrawn(msg.sender, totalAmount);
         return totalAmount;
     }
