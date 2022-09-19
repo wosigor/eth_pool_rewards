@@ -12,7 +12,7 @@ task("balance", "Prints an account's balance")
   });
 
 module.exports = {
-  defaultNetwork: "matic",
+  defaultNetwork: "hardhat",
   networks: {
     hardhat: {
     },
