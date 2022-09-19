@@ -192,7 +192,7 @@ describe("Contract", function () {
                 .withArgs(addr2.address, 450);
         });
 
-        it("should not reward depositer after adding reward", async function () {
+        it("should not reward depositer who deposited after team added rewards", async function () {
             const { hardhatToken, owner, addr1, addr2 } = await loadFixture(
                 deployTokenFixture
             );
@@ -218,6 +218,14 @@ describe("Contract", function () {
             await expect(hardhatToken.connect(addr2).withdraw())
                 .to.emit(hardhatToken, "Withdrawn")
                 .withArgs(addr2.address, 300);
+
+            expect(
+                await hardhatToken.deposits(addr1.address)
+            ).to.equal(0);
+
+            expect(
+                await hardhatToken.deposits(addr2.address)
+            ).to.equal(0);
         });
     });
 });
