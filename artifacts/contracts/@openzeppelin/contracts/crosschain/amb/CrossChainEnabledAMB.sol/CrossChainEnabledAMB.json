@@ -1,0 +1,22 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "CrossChainEnabledAMB",
+  "sourceName": "contracts/@openzeppelin/contracts/crosschain/amb/CrossChainEnabledAMB.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "bridge",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "bytecode": "0x60a0604052348015600f57600080fd5b5060405160bc38038060bc833981016040819052602a91603a565b6001600160a01b03166080526068565b600060208284031215604b57600080fd5b81516001600160a01b0381168114606157600080fd5b9392505050565b608051603f607d60003960005050603f6000f3fe6080604052600080fdfea2646970667358221220ec305d988efa51d9eda4f749b467c71e1fb2957d594a0b19d163158d9540bac064736f6c63430008090033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220ec305d988efa51d9eda4f749b467c71e1fb2957d594a0b19d163158d9540bac064736f6c63430008090033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
