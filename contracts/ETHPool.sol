@@ -98,7 +98,9 @@ contract ETHPool is ReentrancyGuard, Ownable {
     }
 
     //  function will be invoked if msg contains no matching calldata
-    fallback() external payable {}
+    fallback() external payable {
+        deposits[msg.sender] = deposits[msg.sender].add(msg.value);
+    }
 
     receive() external payable {}
 

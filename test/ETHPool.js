@@ -231,13 +231,12 @@ describe("Contract", function () {
             expect(
                 await hardhatToken.rewardPerDeposit()
             ).to.equal(200);
-            await expect(hardhatToken.connect(addr1).withdraw())
-                .to.emit(hardhatToken, "Withdrawn")
-                .withArgs(addr1.address, 300);
-
             await expect(hardhatToken.connect(addr2).withdraw())
                 .to.emit(hardhatToken, "Withdrawn")
                 .withArgs(addr2.address, 300);
+            await expect(hardhatToken.connect(addr1).withdraw())
+                .to.emit(hardhatToken, "Withdrawn")
+                .withArgs(addr1.address, 300);
 
             expect(
                 await hardhatToken.deposits(addr1.address)
