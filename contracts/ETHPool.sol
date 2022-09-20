@@ -64,7 +64,7 @@ contract ETHPool is ReentrancyGuard, Ownable {
     }
 
     // team reward deposit
-    function depositReward() external payable nonReentrant onlyOwner {
+    function depositReward() external payable onlyOwner {
         require(msg.value > 0, "amount must be > 0");
         totalDepositedRewards = totalDepositedRewards.add(msg.value);
         // multiply by 100 to avoid decimals
@@ -90,8 +90,9 @@ contract ETHPool is ReentrancyGuard, Ownable {
         uint256 totalAmount = balance.add(reward);
         (bool success, ) = msg.sender.call{value: totalAmount}("");
         deposits[msg.sender] = 0;
-        require(success, "Failed to send the funds");
         totalDepositedRewards = totalDepositedRewards.sub(reward);
+        require(success, "Failed to send the funds");
+
         emit Withdrawn(msg.sender, totalAmount);
         return totalAmount;
     }
